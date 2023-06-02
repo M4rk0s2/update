@@ -1,4 +1,7 @@
-﻿Module Module1
+﻿Imports System.IO
+Imports System.Net
+
+Module Module1
 
     Public Function DescargarArchivo(url As String)
         ' Obtener el nombre del archivo de la URL
@@ -16,9 +19,10 @@
         End Using
 
         Console.WriteLine("Archivo descargado correctamente.")
+
     End Function
     Sub Mover_archivos()
-        Dim archivoOrigen As String = "archivo.txt"
+        Dim archivoOrigen As String = "efClientICG.exe"
         Dim carpetaRespaldo As String = "Respaldo_Firmado"
 
         ' Obtener la ruta completa del directorio actual donde se encuentra el ejecutable
