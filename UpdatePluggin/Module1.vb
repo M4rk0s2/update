@@ -44,9 +44,9 @@ Module Module1
         Dim rutaArchivoDestino As String = Path.Combine(rutaCarpetaRespaldo, nombreArchivoDestino)
         File.Move(rutaArchivoOrigen, rutaArchivoDestino)
 
-        ' Verificar si hay más de 5 archivos en la carpeta de respaldo y eliminar el más antiguo si es necesario
+        ' Verificar si hay más de 10 archivos en la carpeta de respaldo y eliminar el más antiguo si es necesario
         Dim archivosEnRespaldo As String() = Directory.GetFiles(rutaCarpetaRespaldo)
-        If archivosEnRespaldo.Length > 5 Then
+        If archivosEnRespaldo.Length > 10 Then
             Dim archivoMasAntiguo As String = archivosEnRespaldo.OrderBy(Function(f) File.GetCreationTime(f)).First()
             File.Delete(archivoMasAntiguo)
         End If
