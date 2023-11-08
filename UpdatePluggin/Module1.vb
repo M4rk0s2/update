@@ -1,7 +1,20 @@
 ﻿Imports System.IO
 Imports System.Net
 
+
 Module Module1
+    Function DesArchivoYGuardarConNombre(url As String, nombreGuardado As String) As Boolean
+        Try
+            Dim webClient As New WebClient()
+
+            ' Descarga el archivo desde la URL y guárdalo con el nombre deseado
+            webClient.DownloadFile(url, nombreGuardado)
+            Return True
+        Catch ex As Exception
+            Console.WriteLine("Error al descargar el archivo: " & ex.Message)
+            Return False
+        End Try
+    End Function
 
     Public Function DescargarArchivo(url As String)
         ' Obtener el nombre del archivo de la URL
@@ -54,4 +67,24 @@ Module Module1
         Console.WriteLine("El archivo se ha movido y respaldado correctamente.")
     End Sub
 
+
+    Public Function CompararVersiones(ByVal rutaArchivo1 As String, ByVal rutaArchivo2 As String) As Boolean
+        If System.IO.File.Exists(rutaArchivo1) And System.IO.File.Exists(rutaArchivo2) Then
+            Dim fileInfo1 As FileVersionInfo = FileVersionInfo.GetVersionInfo(rutaArchivo1)
+            Dim fileInfo2 As FileVersionInfo = FileVersionInfo.GetVersionInfo(rutaArchivo2)
+
+            Dim versionArchivo1 As Version = New Version(fileInfo1.ProductVersion)
+            Dim versionArchivo2 As Version = New Version(fileInfo2.ProductVersion)
+
+            ' Compara las versiones
+            If versionArchivo1 < versionArchivo2 Then
+                Return True
+            Else
+                Return False
+            End If
+        Else
+            Console.WriteLine("Uno o ambos archivos no existen.")
+            Return False
+        End If
+    End Function
 End Module
