@@ -16,9 +16,7 @@ Public Class Form1
         ' comparamos las verciones 
 
         If DesArchivoYGuardarConNombre(URL, nombrArchivoVer) Then
-            MsgBox("Descarga exitosa.",)
             compVersion = CompararVersiones(rutaArchivo, nombrArchivoVer)
-            MsgBox(compVersion,)
             File.Delete(nombrArchivoVer)
         Else
             Console.WriteLine("La descarga falló.")
