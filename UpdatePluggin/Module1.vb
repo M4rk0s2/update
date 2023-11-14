@@ -16,7 +16,8 @@ Module Module1
         End Try
     End Function
 
-    Public Function DescargarArchivo(url As String)
+
+    Sub DescargarArchivo(url As String)
         ' Obtener el nombre del archivo de la URL
         Dim nombreArchivo As String = Path.GetFileName(url)
 
@@ -33,7 +34,7 @@ Module Module1
 
         Console.WriteLine("Archivo descargado correctamente.")
 
-    End Function
+    End Sub
     Sub Mover_archivos()
         Dim archivoOrigen As String = "efClientICG.exe"
         Dim carpetaRespaldo As String = "Respaldo_Firmado"
